@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>YX Zhang</title>
-  <meta name="description" content="YX Zhang 的个人网站">
+  <title>Yuxiang Zhang</title>
+  <meta name="description" content="Yuxiang Zhang — senior software engineer at eBay. Distributed systems, platform delivery, and production reliability.">
   <style>
     :root {
       --bg: #fafaf9;
@@ -12,6 +12,7 @@
       --muted: #78716c;
       --line: #e7e5e4;
       --accent: #2563eb;
+      --chip: #f0efed;
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -20,6 +21,7 @@
         --muted: #a8a29e;
         --line: #292524;
         --accent: #60a5fa;
+        --chip: #1c1917;
       }
     }
     * { box-sizing: border-box; }
@@ -27,41 +29,157 @@
       margin: 0;
       background: var(--bg);
       color: var(--fg);
-      font: 17px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
     }
     main {
-      max-width: 640px;
+      max-width: 720px;
       margin: 0 auto;
       padding: 72px 16px 48px;
     }
-    h1 { font-size: 2rem; margin: 0 0 4px; letter-spacing: -0.02em; }
-    .tagline { color: var(--muted); margin: 0 0 32px; }
+    h1 { font-size: 2.2rem; margin: 0 0 4px; letter-spacing: -0.02em; line-height: 1.2; }
+    .tagline { color: var(--muted); margin: 0 0 16px; font-size: 1.05rem; }
+    .links a { margin-right: 20px; }
     h2 {
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--muted);
-      margin: 48px 0 12px;
+      margin: 56px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .links a { margin-right: 20px; }
+    p { margin: 0 0 12px; }
+
+    .job { margin-bottom: 36px; }
+    .job-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0 16px;
+      align-items: baseline;
+    }
+    .job-head h3 { margin: 0; font-size: 1.1rem; }
+    .when { color: var(--muted); font-size: 0.9rem; white-space: nowrap; }
+    .role { color: var(--muted); margin: 0 0 8px; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin-bottom: 6px; }
+
+    .skills { display: grid; gap: 14px; }
+    .skills dt { font-weight: 600; margin-bottom: 6px; }
+    .skills dd { margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip {
+      background: var(--chip);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: 0.85rem;
+    }
+
     footer { margin-top: 64px; color: var(--muted); font-size: 0.85rem; }
   </style>
 </head>
 <body>
   <main>
-    <h1>YX Zhang</h1>
-    <p class="tagline">在这里写一句话介绍自己。</p>
+    <header>
+      <h1>Yuxiang Zhang</h1>
+      <p class="tagline">Senior Software Engineer at eBay · Toronto, Canada</p>
+      <p class="links">
+        <a href="mailto:yuxiang.zhang505@gmail.com">Email</a>
+        <a href="https://github.com/YX-Zhang-5">GitHub</a>
+      </p>
+    </header>
 
-    <p>欢迎来到我的个人网站。这里可以写几句你的背景、正在做的事情和感兴趣的方向。</p>
+    <section>
+      <h2>About</h2>
+      <p>Software engineer with 4+ years of hands-on experience across eBay, OpenText, and Coinbase. I take distributed systems and platform initiatives from requirements through implementation, testing, release, and production operations — pairing technical depth with cross-team coordination, risk management, incident leadership, and clear documentation in high-availability environments.</p>
+    </section>
 
-    <h2>联系</h2>
-    <p class="links">
-      <a href="https://github.com/YX-Zhang-5">GitHub</a>
-    </p>
+    <section>
+      <h2>Experience</h2>
 
-    <footer>© 2026 YX Zhang</footer>
+      <div class="job">
+        <div class="job-head">
+          <h3>eBay</h3>
+          <span class="when">Sep 2024 – Present</span>
+        </div>
+        <p class="role">Senior Software Engineer · Toronto, Canada</p>
+        <ul>
+          <li>Partnered with engineering stakeholders to deliver latency optimizations for eBay Live auction services, translating real-time bidding needs into technical scope across implementation, testing, monitoring, and rollout.</li>
+          <li>Drove technical implementation and launch of Popcorn Bidding, coordinating dependencies and release readiness for automatic auction extensions in the final minutes, improving engagement and fairness in a revenue-critical flow.</li>
+          <li>Strengthened delivery and production readiness by expanding regression coverage, documenting orchestration and release workflows, and maintaining Grafana dashboards for faster risk identification and knowledge transfer.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <h3>OpenText</h3>
+          <span class="when">Apr 2023 – Aug 2024</span>
+        </div>
+        <p class="role">Software Developer II · Waterloo, Canada</p>
+        <ul>
+          <li>Led end-to-end development of an internal log analysis tool for the Performance Engineering team, translating user needs into delivery priorities and reducing analysis time by 65%.</li>
+          <li>Designed and directed an automated test framework using GCP, Docker, and Kubernetes, balancing infrastructure dependencies and delivery priorities to improve test efficiency by 30%.</li>
+          <li>Planned performance testing and bottleneck analysis with LoadRunner and JMeter, communicating resource risks through Grafana dashboards to enable earlier issue detection.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <h3>Coinbase</h3>
+          <span class="when">Mar 2022 – Mar 2023</span>
+        </div>
+        <p class="role">Software Engineer · Toronto, Canada</p>
+        <ul>
+          <li>Delivered the migration of 50K+ recurring trades per day from Ruby into a Go service, decomposing 99.8% of the sensitive flow while reducing latency by 2% and increasing developer velocity by 15%.</li>
+          <li>Led cross-team resolution of 10+ production incidents as primary on-call engineer, coordinating triage and follow-up actions and contributing to retrospectives for shared learning.</li>
+          <li>Improved pricing-service reliability by optimizing gRPC retry policy and expanding Datadog monitoring, increasing pricing request success rate by 10%.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <dl class="skills">
+        <div>
+          <dt>Engineering</dt>
+          <dd>
+            <span class="chip">Java</span><span class="chip">Python</span><span class="chip">Go</span><span class="chip">C++</span><span class="chip">SQL</span><span class="chip">Spring Boot</span><span class="chip">gRPC</span><span class="chip">Distributed systems</span><span class="chip">Microservices</span>
+          </dd>
+        </div>
+        <div>
+          <dt>Platforms &amp; Tools</dt>
+          <dd>
+            <span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">GCP</span><span class="chip">Jenkins</span><span class="chip">Datadog</span><span class="chip">Grafana</span><span class="chip">JMeter</span><span class="chip">LoadRunner</span>
+          </dd>
+        </div>
+        <div>
+          <dt>Project Delivery</dt>
+          <dd>
+            <span class="chip">Requirements analysis</span><span class="chip">Scope &amp; milestone planning</span><span class="chip">Dependency &amp; risk tracking</span><span class="chip">Release readiness</span><span class="chip">Stakeholder communication</span><span class="chip">Incident coordination</span><span class="chip">Retrospectives</span><span class="chip">Technical documentation</span>
+          </dd>
+        </div>
+      </dl>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="job">
+        <div class="job-head">
+          <h3>University of Waterloo</h3>
+          <span class="when">2016 – 2021</span>
+        </div>
+        <p class="role">BCS (Co-op Honours), Computer Science · Waterloo, Canada</p>
+        <ul>
+          <li>Graduated with distinction</li>
+          <li>President’s Scholarship of Distinction and President’s Research Award</li>
+          <li>Term Dean’s Honours List (average of 87% or higher)</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>© 2026 Yuxiang Zhang</footer>
   </main>
 </body>
 </html>
