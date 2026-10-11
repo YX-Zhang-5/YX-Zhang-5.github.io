@@ -300,7 +300,26 @@
       line-height: 1.1;
       margin: 0 0 8px;
     }
-    .edu .degree { font-size: 19px; color: var(--muted); margin: 0 0 32px; }
+    .edu .degree { font-size: 19px; color: var(--muted); margin: 0 0 20px; }
+    .qs {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      margin: 0 0 32px;
+      padding: 10px 20px;
+      border-radius: 980px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+      font-size: 15px;
+      color: #d1d1d6;
+      transition: border-color 0.2s;
+    }
+    .qs:hover { border-color: rgba(255, 255, 255, 0.4); }
+    .qs .rank { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+    .qs .src { color: var(--muted); font-size: 13px; }
+    @media (max-width: 639px) {
+      .qs { flex-direction: column; align-items: center; gap: 2px; border-radius: 20px; padding: 12px 24px; }
+    }
     .honors {
       display: flex;
       flex-wrap: wrap;
@@ -465,6 +484,11 @@
           <p class="eyebrow">Education · 2016 – 2021</p>
           <h3 class="grad">University of Waterloo</h3>
           <p class="degree">BCS (Co-op Honours), Computer Science</p>
+          <a class="qs" href="https://www.topuniversities.com/university-subject-rankings/computer-science-information-systems" title="QS World University Rankings by Subject 2026: Computer Science &amp; Information Systems">
+            <span class="rank grad">#27</span>
+            <span>in the world for Computer Science</span>
+            <span class="src">QS 2026</span>
+          </a>
           <ul class="honors">
             <li>Graduated with distinction</li>
             <li>President’s Scholarship of Distinction</li>
