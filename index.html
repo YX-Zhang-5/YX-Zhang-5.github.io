@@ -11,36 +11,20 @@
   <script>document.documentElement.classList.add("js");</script>
   <style>
     :root {
-      --bg: #ffffff;
-      --bg-alt: #f5f5f7;
-      --fg: #1d1d1f;
-      --muted: #6e6e73;
-      --line: #d2d2d7;
-      --card: #ffffff;
-      --accent: #0071e3;
-      --accent-fg: #ffffff;
-      --nav: rgba(255, 255, 255, 0.72);
-      --grad-a: #0071e3;
-      --grad-b: #7a3cff;
-      --grad-c: #e0427a;
-      --shadow: 0 2px 24px rgba(0, 0, 0, 0.06);
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #000000;
-        --bg-alt: #101012;
-        --fg: #f5f5f7;
-        --muted: #a1a1a6;
-        --line: #2c2c2e;
-        --card: #1c1c1e;
-        --accent: #2997ff;
-        --accent-fg: #ffffff;
-        --nav: rgba(22, 22, 23, 0.72);
-        --grad-a: #2997ff;
-        --grad-b: #a06bff;
-        --grad-c: #ff6b9a;
-        --shadow: none;
-      }
+      color-scheme: dark;
+      --bg: #000000;
+      --bg-alt: #0b0b0c;
+      --fg: #f5f5f7;
+      --muted: #86868b;
+      --line: #2a2a2c;
+      --card: #161617;
+      --accent: #f5f5f7;
+      --accent-fg: #000000;
+      --nav: rgba(0, 0, 0, 0.72);
+      --grad-a: #f5f5f7;
+      --grad-b: #c7c7cc;
+      --grad-c: #8e8e93;
+      --shadow: none;
     }
 
     * { box-sizing: border-box; }
@@ -55,7 +39,7 @@
       letter-spacing: -0.01em;
       -webkit-font-smoothing: antialiased;
     }
-    a { color: var(--accent); text-decoration: none; }
+    a { color: var(--fg); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
     .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
@@ -85,7 +69,11 @@
     @media (min-width: 720px) { nav ul { display: flex; } }
 
     /* Hero */
-    .hero { text-align: center; padding: 96px 0 88px; }
+    .hero {
+      text-align: center;
+      padding: 112px 16px 104px;
+      background: radial-gradient(ellipse 60% 50% at 50% 35%, rgba(255, 255, 255, 0.08), transparent 70%);
+    }
     .eyebrow {
       font-size: 19px;
       font-weight: 600;
@@ -125,9 +113,9 @@
     }
     .btn:hover { text-decoration: none; }
     .btn-primary { background: var(--accent); color: var(--accent-fg); }
-    .btn-primary:hover { filter: brightness(1.08); }
-    .btn-ghost { color: var(--accent); background: transparent; }
-    .btn-ghost:hover { background: var(--accent); color: var(--accent-fg); }
+    .btn-primary:hover { background: #d1d1d6; border-color: #d1d1d6; }
+    .btn-ghost { color: var(--fg); background: transparent; border-color: #6e6e73; }
+    .btn-ghost:hover { background: var(--fg); color: var(--accent-fg); border-color: var(--fg); }
 
     /* Sections */
     section { padding: 88px 0; }
@@ -158,6 +146,7 @@
     }
     .stat {
       background: var(--card);
+      border: 1px solid var(--line);
       border-radius: 24px;
       padding: 24px 18px;
       box-shadow: var(--shadow);
@@ -175,6 +164,7 @@
     .jobs { display: grid; gap: 20px; }
     .job {
       background: var(--card);
+      border: 1px solid var(--line);
       border-radius: 28px;
       padding: 36px 24px;
       box-shadow: var(--shadow);
@@ -218,6 +208,7 @@
     }
     .tile {
       background: var(--card);
+      border: 1px solid var(--line);
       border-radius: 28px;
       padding: 32px 24px;
       box-shadow: var(--shadow);
@@ -228,7 +219,8 @@
     .chip {
       padding: 6px 14px;
       border-radius: 980px;
-      background: var(--bg-alt);
+      background: #0b0b0c;
+      color: #d1d1d6;
       border: 1px solid var(--line);
       font-size: 15px;
     }
@@ -236,20 +228,20 @@
     /* Education */
     .edu {
       border-radius: 28px;
-      padding: 48px 24px;
+      padding: 56px 24px;
       text-align: center;
-      background: linear-gradient(135deg, var(--grad-a), var(--grad-b) 60%, var(--grad-c));
-      color: #fff;
+      background: radial-gradient(ellipse 70% 80% at 50% 0%, #2c2c2e, #111112 70%);
+      border: 1px solid var(--line);
     }
-    @media (min-width: 640px) { .edu { padding: 64px 48px; } }
-    .edu .eyebrow { color: rgba(255, 255, 255, 0.8); }
+    @media (min-width: 640px) { .edu { padding: 72px 48px; } }
+    .edu .eyebrow { color: var(--muted); }
     .edu h3 {
       font-size: clamp(30px, 5vw, 48px);
       letter-spacing: -0.03em;
       line-height: 1.1;
       margin: 0 0 8px;
     }
-    .edu .degree { font-size: 19px; opacity: 0.9; margin: 0 0 32px; }
+    .edu .degree { font-size: 19px; color: var(--muted); margin: 0 0 32px; }
     .honors {
       display: flex;
       flex-wrap: wrap;
@@ -260,8 +252,9 @@
       padding: 0;
     }
     .honors li {
-      background: rgba(255, 255, 255, 0.16);
-      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #d1d1d6;
       border-radius: 980px;
       padding: 8px 16px;
       font-size: 15px;
@@ -303,7 +296,7 @@
   </nav>
 
   <main id="top">
-    <header class="hero wrap">
+    <header class="hero">
       <p class="eyebrow reveal">Yuxiang (Michael) Zhang</p>
       <h1 class="reveal">Turning code into <span class="grad">real-world impact.</span></h1>
       <p class="lede reveal">Senior Software Engineer at eBay. I’ve built the systems behind live auctions at eBay, crypto trading at Coinbase, and performance tooling at OpenText.</p>
@@ -410,7 +403,7 @@
       <div class="wrap">
         <div class="edu reveal">
           <p class="eyebrow">Education · 2016 – 2021</p>
-          <h3>University of Waterloo</h3>
+          <h3 class="grad">University of Waterloo</h3>
           <p class="degree">BCS (Co-op Honours), Computer Science</p>
           <ul class="honors">
             <li>Graduated with distinction</li>
