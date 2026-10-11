@@ -85,6 +85,48 @@
     nav ul a:hover { opacity: 1; text-decoration: none; }
     @media (min-width: 720px) { nav ul { display: flex; } }
 
+    /* Mobile menu */
+    .menu-toggle {
+      display: none;
+      width: 36px;
+      height: 36px;
+      margin-right: -8px;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: var(--fg);
+      cursor: pointer;
+      position: relative;
+    }
+    .menu-toggle span {
+      position: absolute;
+      left: 10px;
+      width: 16px;
+      height: 1.5px;
+      border-radius: 1px;
+      background: currentColor;
+      transition: transform 0.25s ease, top 0.25s ease;
+    }
+    .menu-toggle span:first-child { top: 14px; }
+    .menu-toggle span:last-child { top: 21px; }
+    nav.open .menu-toggle span:first-child { top: 17.5px; transform: rotate(45deg); }
+    nav.open .menu-toggle span:last-child { top: 17.5px; transform: rotate(-45deg); }
+    @media (max-width: 719.98px) {
+      .js .menu-toggle { display: block; }
+      nav.open ul {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 8px 16px 16px;
+        background: rgba(0, 0, 0, 0.96);
+        border-bottom: 1px solid var(--line);
+      }
+      nav.open ul li + li { border-top: 1px solid var(--line); }
+      nav.open ul a { display: block; padding: 14px 0; font-size: 17px; }
+    }
+
     /* Hero */
     .hero {
       text-align: center;
@@ -303,7 +345,8 @@
   <nav>
     <div class="wrap">
       <a class="brand" href="#top">Michael Zhang</a>
-      <ul>
+      <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
+      <ul id="nav-links">
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#education">Education</a></li>
@@ -463,6 +506,24 @@
         this.dataset.ready = "1";
         window.location.href = this.href;
       });
+    });
+
+    // Mobile menu: toggle the nav links, close on link tap, Escape, or widening past the breakpoint.
+    var nav = document.querySelector("nav");
+    var toggle = nav.querySelector(".menu-toggle");
+    var setMenu = function (open) {
+      nav.classList.toggle("open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+    toggle.addEventListener("click", function () { setMenu(!nav.classList.contains("open")); });
+    nav.querySelectorAll("ul a").forEach(function (a) {
+      a.addEventListener("click", function () { setMenu(false); });
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && nav.classList.contains("open")) { setMenu(false); toggle.focus(); }
+    });
+    window.matchMedia("(min-width: 720px)").addEventListener("change", function (e) {
+      if (e.matches) setMenu(false);
     });
 
     // Fade sections in as they scroll into view.
