@@ -5,196 +5,465 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Yuxiang (Michael) Zhang</title>
   <meta name="description" content="Yuxiang (Michael) Zhang — senior software engineer at eBay. Distributed systems, platform delivery, and production reliability.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add("js");</script>
   <style>
     :root {
-      --bg: #fafaf9;
-      --fg: #1c1917;
-      --muted: #78716c;
-      --line: #e7e5e4;
-      --accent: #2563eb;
-      --chip: #f0efed;
+      --bg: #ffffff;
+      --bg-alt: #f5f5f7;
+      --fg: #1d1d1f;
+      --muted: #6e6e73;
+      --line: #d2d2d7;
+      --card: #ffffff;
+      --accent: #0071e3;
+      --accent-fg: #ffffff;
+      --nav: rgba(255, 255, 255, 0.72);
+      --grad-a: #0071e3;
+      --grad-b: #7a3cff;
+      --grad-c: #e0427a;
+      --shadow: 0 2px 24px rgba(0, 0, 0, 0.06);
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #0c0a09;
-        --fg: #f5f5f4;
-        --muted: #a8a29e;
-        --line: #292524;
-        --accent: #60a5fa;
-        --chip: #1c1917;
+        --bg: #000000;
+        --bg-alt: #101012;
+        --fg: #f5f5f7;
+        --muted: #a1a1a6;
+        --line: #2c2c2e;
+        --card: #1c1c1e;
+        --accent: #2997ff;
+        --accent-fg: #ffffff;
+        --nav: rgba(22, 22, 23, 0.72);
+        --grad-a: #2997ff;
+        --grad-b: #a06bff;
+        --grad-c: #ff6b9a;
+        --shadow: none;
       }
     }
+
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 56px; }
     body {
       margin: 0;
       background: var(--bg);
       color: var(--fg);
-      font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-    }
-    main {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 72px 16px 48px;
-    }
-    h1 { font-size: 2.2rem; margin: 0 0 4px; letter-spacing: -0.02em; line-height: 1.2; }
-    .tagline { color: var(--muted); margin: 0 0 16px; font-size: 1.05rem; }
-    .links a { margin-right: 20px; }
-    h2 {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      margin: 56px 0 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--line);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, "Helvetica Neue", Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+      -webkit-font-smoothing: antialiased;
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    p { margin: 0 0 12px; }
 
-    .job { margin-bottom: 36px; }
-    .job-head {
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+    @media (min-width: 640px) { .wrap { padding: 0 24px; } }
+
+    /* Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--nav);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 48px;
+      font-size: 13px;
+    }
+    nav .brand { color: var(--fg); font-weight: 600; font-size: 15px; }
+    nav ul { display: none; list-style: none; margin: 0; padding: 0; gap: 28px; }
+    nav ul a { color: var(--fg); opacity: 0.8; }
+    nav ul a:hover { opacity: 1; text-decoration: none; }
+    @media (min-width: 720px) { nav ul { display: flex; } }
+
+    /* Hero */
+    .hero { text-align: center; padding: 96px 0 88px; }
+    .eyebrow {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+    .hero h1 {
+      font-size: clamp(40px, 9vw, 80px);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      font-weight: 700;
+      margin: 0 auto 20px;
+      max-width: 14ch;
+    }
+    .grad {
+      background: linear-gradient(90deg, var(--grad-a), var(--grad-b) 55%, var(--grad-c));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero .lede {
+      font-size: clamp(19px, 2.6vw, 24px);
+      line-height: 1.4;
+      color: var(--muted);
+      max-width: 36ch;
+      margin: 0 auto 36px;
+    }
+    .ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 980px;
+      font-size: 17px;
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn:hover { text-decoration: none; }
+    .btn-primary { background: var(--accent); color: var(--accent-fg); }
+    .btn-primary:hover { filter: brightness(1.08); }
+    .btn-ghost { color: var(--accent); background: transparent; }
+    .btn-ghost:hover { background: var(--accent); color: var(--accent-fg); }
+
+    /* Sections */
+    section { padding: 88px 0; }
+    .alt { background: var(--bg-alt); }
+    .section-title {
+      font-size: clamp(32px, 6vw, 56px);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+      margin: 0 0 12px;
+    }
+    .section-sub {
+      font-size: clamp(19px, 2.4vw, 21px);
+      color: var(--muted);
+      margin: 0 0 48px;
+      max-width: 40ch;
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    @media (min-width: 820px) {
+      .stats { grid-template-columns: repeat(4, 1fr); }
+      .stat { padding: 28px 24px; }
+    }
+    .stat {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 24px 18px;
+      box-shadow: var(--shadow);
+    }
+    .stat .num {
+      font-size: clamp(36px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .stat .label { color: var(--muted); font-size: 15px; line-height: 1.35; }
+
+    /* Experience */
+    .jobs { display: grid; gap: 20px; }
+    .job {
+      background: var(--card);
+      border-radius: 28px;
+      padding: 36px 24px;
+      box-shadow: var(--shadow);
+    }
+    @media (min-width: 640px) { .job { padding: 44px 48px; } }
+    .job-top {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      gap: 0 16px;
       align-items: baseline;
+      gap: 4px 16px;
+      margin-bottom: 4px;
     }
-    .job-head h3 { margin: 0; font-size: 1.1rem; }
-    .when { color: var(--muted); font-size: 0.9rem; white-space: nowrap; }
-    .role { color: var(--muted); margin: 0 0 8px; }
-    ul { margin: 0; padding-left: 20px; }
-    li { margin-bottom: 6px; }
+    .job h3 {
+      font-size: clamp(28px, 4.5vw, 40px);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin: 0;
+    }
+    .job .when { color: var(--muted); font-size: 15px; }
+    .job .role { color: var(--muted); font-size: 17px; margin: 0 0 24px; }
+    .job ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+    .job li { padding-left: 22px; position: relative; }
+    .job li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.62em;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
+    }
+    .job strong { font-weight: 600; }
 
-    .skills { display: grid; gap: 14px; }
-    .skills dt { font-weight: 600; margin-bottom: 6px; }
-    .skills dd { margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+    /* Skills */
+    .bento { display: grid; gap: 20px; }
+    @media (min-width: 820px) {
+      .bento { grid-template-columns: 1fr 1fr; }
+      .bento .wide { grid-column: span 2; }
+    }
+    .tile {
+      background: var(--card);
+      border-radius: 28px;
+      padding: 32px 24px;
+      box-shadow: var(--shadow);
+    }
+    @media (min-width: 640px) { .tile { padding: 40px; } }
+    .tile h3 { font-size: 24px; letter-spacing: -0.02em; margin: 0 0 20px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
     .chip {
-      background: var(--chip);
+      padding: 6px 14px;
+      border-radius: 980px;
+      background: var(--bg-alt);
       border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 2px 10px;
-      font-size: 0.85rem;
+      font-size: 15px;
     }
 
-    footer { margin-top: 64px; color: var(--muted); font-size: 0.85rem; }
+    /* Education */
+    .edu {
+      border-radius: 28px;
+      padding: 48px 24px;
+      text-align: center;
+      background: linear-gradient(135deg, var(--grad-a), var(--grad-b) 60%, var(--grad-c));
+      color: #fff;
+    }
+    @media (min-width: 640px) { .edu { padding: 64px 48px; } }
+    .edu .eyebrow { color: rgba(255, 255, 255, 0.8); }
+    .edu h3 {
+      font-size: clamp(30px, 5vw, 48px);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin: 0 0 8px;
+    }
+    .edu .degree { font-size: 19px; opacity: 0.9; margin: 0 0 32px; }
+    .honors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .honors li {
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 980px;
+      padding: 8px 16px;
+      font-size: 15px;
+    }
+
+    /* Contact */
+    .contact { text-align: center; }
+    .contact .section-sub { margin-left: auto; margin-right: auto; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      padding: 20px 0 32px;
+    }
+
+    /* Reveal on scroll — only when JS is running and motion is OK */
+    @media (prefers-reduced-motion: no-preference) {
+      .js .reveal {
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1);
+      }
+      .js .reveal.in { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 <body>
-  <main>
-    <header>
-      <h1>Yuxiang (Michael) Zhang</h1>
-      <p class="tagline">Senior Software Engineer at eBay · Toronto, Canada</p>
-      <p class="links">
-        <a href="https://www.linkedin.com/in/michael-zhang-uw">LinkedIn</a>
-        <a href="#" id="email" data-u="505gnahz.gnaixuy" data-d="moc.liamg">Email</a>
-        <a href="https://github.com/YX-Zhang-5">GitHub</a>
-      </p>
+  <nav>
+    <div class="wrap">
+      <a class="brand" href="#top">Michael Zhang</a>
+      <ul>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero wrap">
+      <p class="eyebrow reveal">Yuxiang (Michael) Zhang</p>
+      <h1 class="reveal">Systems that <span class="grad">hold up</span> in production.</h1>
+      <p class="lede reveal">Senior Software Engineer at eBay, taking distributed systems from first requirement to reliable release.</p>
+      <div class="ctas reveal">
+        <a class="btn btn-primary" href="https://www.linkedin.com/in/michael-zhang-uw">Connect on LinkedIn</a>
+        <a class="btn btn-ghost js-email" href="#" data-u="505gnahz.gnaixuy" data-d="moc.liamg">Email me</a>
+      </div>
     </header>
 
-    <section>
-      <h2>About</h2>
-      <p>Software engineer with 4+ years of hands-on experience across eBay, OpenText, and Coinbase. I take distributed systems and platform initiatives from requirements through implementation, testing, release, and production operations — pairing technical depth with cross-team coordination, risk management, incident leadership, and clear documentation in high-availability environments.</p>
-    </section>
-
-    <section>
-      <h2>Experience</h2>
-
-      <div class="job">
-        <div class="job-head">
-          <h3>eBay</h3>
-          <span class="when">Sep 2024 – Present</span>
+    <section class="alt">
+      <div class="wrap">
+        <h2 class="section-title reveal">At a glance.</h2>
+        <p class="section-sub reveal">4+ years across eBay, OpenText, and Coinbase — from requirements through implementation, testing, release, and production operations.</p>
+        <div class="stats">
+          <div class="stat reveal"><div class="num grad">50K+</div><div class="label">recurring trades a day migrated from Ruby to Go at Coinbase</div></div>
+          <div class="stat reveal"><div class="num grad">65%</div><div class="label">less log analysis time with a tool built for OpenText Performance Engineering</div></div>
+          <div class="stat reveal"><div class="num grad">30%</div><div class="label">more efficient testing on GCP, Docker, and Kubernetes</div></div>
+          <div class="stat reveal"><div class="num grad">10+</div><div class="label">production incidents led to resolution as primary on-call</div></div>
         </div>
-        <p class="role">Senior Software Engineer · Toronto, Canada</p>
-        <ul>
-          <li>Partnered with engineering stakeholders to deliver latency optimizations for eBay Live auction services, translating real-time bidding needs into technical scope across implementation, testing, monitoring, and rollout.</li>
-          <li>Drove technical implementation and launch of Popcorn Bidding, coordinating dependencies and release readiness for automatic auction extensions in the final minutes, improving engagement and fairness in a revenue-critical flow.</li>
-          <li>Strengthened delivery and production readiness by expanding regression coverage, documenting orchestration and release workflows, and maintaining Grafana dashboards for faster risk identification and knowledge transfer.</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <div class="job-head">
-          <h3>OpenText</h3>
-          <span class="when">Apr 2023 – Aug 2024</span>
-        </div>
-        <p class="role">Software Developer II · Waterloo, Canada</p>
-        <ul>
-          <li>Led end-to-end development of an internal log analysis tool for the Performance Engineering team, translating user needs into delivery priorities and reducing analysis time by 65%.</li>
-          <li>Designed and directed an automated test framework using GCP, Docker, and Kubernetes, balancing infrastructure dependencies and delivery priorities to improve test efficiency by 30%.</li>
-          <li>Planned performance testing and bottleneck analysis with LoadRunner and JMeter, communicating resource risks through Grafana dashboards to enable earlier issue detection.</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <div class="job-head">
-          <h3>Coinbase</h3>
-          <span class="when">Mar 2022 – Mar 2023</span>
-        </div>
-        <p class="role">Software Engineer · Toronto, Canada</p>
-        <ul>
-          <li>Delivered the migration of 50K+ recurring trades per day from Ruby into a Go service, decomposing 99.8% of the sensitive flow while reducing latency by 2% and increasing developer velocity by 15%.</li>
-          <li>Led cross-team resolution of 10+ production incidents as primary on-call engineer, coordinating triage and follow-up actions and contributing to retrospectives for shared learning.</li>
-          <li>Improved pricing-service reliability by optimizing gRPC retry policy and expanding Datadog monitoring, increasing pricing request success rate by 10%.</li>
-        </ul>
       </div>
     </section>
 
-    <section>
-      <h2>Skills</h2>
-      <dl class="skills">
-        <div>
-          <dt>Engineering</dt>
-          <dd>
-            <span class="chip">Java</span><span class="chip">Python</span><span class="chip">Go</span><span class="chip">C++</span><span class="chip">SQL</span><span class="chip">Spring Boot</span><span class="chip">gRPC</span><span class="chip">Distributed systems</span><span class="chip">Microservices</span>
-          </dd>
+    <section id="experience">
+      <div class="wrap">
+        <h2 class="section-title reveal">Experience.</h2>
+        <p class="section-sub reveal">Revenue-critical, high-availability systems — shipped carefully and run well.</p>
+        <div class="jobs">
+          <article class="job reveal">
+            <div class="job-top">
+              <h3>eBay</h3>
+              <span class="when">Sep 2024 – Present</span>
+            </div>
+            <p class="role">Senior Software Engineer · Toronto</p>
+            <ul>
+              <li>Partnered with engineering stakeholders to deliver <strong>latency optimizations for eBay Live</strong> auction services, translating real-time bidding needs into technical scope across implementation, testing, monitoring, and rollout.</li>
+              <li>Drove the technical implementation and launch of <strong>Popcorn Bidding</strong>, coordinating dependencies and release readiness for automatic auction extensions in the final minutes, improving engagement and fairness in a revenue-critical flow.</li>
+              <li>Strengthened production readiness by expanding regression coverage, documenting orchestration and release workflows, and maintaining Grafana dashboards for faster risk identification and knowledge transfer.</li>
+            </ul>
+          </article>
+
+          <article class="job reveal">
+            <div class="job-top">
+              <h3>OpenText</h3>
+              <span class="when">Apr 2023 – Aug 2024</span>
+            </div>
+            <p class="role">Software Developer II · Waterloo</p>
+            <ul>
+              <li>Led end-to-end development of an internal log analysis tool for the Performance Engineering team, translating user needs into delivery priorities and <strong>reducing analysis time by 65%</strong>.</li>
+              <li>Designed and directed an automated test framework using GCP, Docker, and Kubernetes, balancing infrastructure dependencies and delivery priorities to <strong>improve test efficiency by 30%</strong>.</li>
+              <li>Planned performance testing and bottleneck analysis with LoadRunner and JMeter, communicating resource risks through Grafana dashboards to enable earlier issue detection.</li>
+            </ul>
+          </article>
+
+          <article class="job reveal">
+            <div class="job-top">
+              <h3>Coinbase</h3>
+              <span class="when">Mar 2022 – Mar 2023</span>
+            </div>
+            <p class="role">Software Engineer · Toronto</p>
+            <ul>
+              <li>Delivered the migration of <strong>50K+ recurring trades per day</strong> from Ruby into a Go service, decomposing 99.8% of the sensitive flow while reducing latency by 2% and increasing developer velocity by 15%.</li>
+              <li>Led cross-team resolution of <strong>10+ production incidents</strong> as primary on-call engineer, coordinating triage and follow-up actions and contributing to retrospectives for shared learning.</li>
+              <li>Improved pricing-service reliability by optimizing gRPC retry policy and expanding Datadog monitoring, <strong>increasing pricing request success rate by 10%</strong>.</li>
+            </ul>
+          </article>
         </div>
-        <div>
-          <dt>Platforms &amp; Tools</dt>
-          <dd>
-            <span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">GCP</span><span class="chip">Jenkins</span><span class="chip">Datadog</span><span class="chip">Grafana</span><span class="chip">JMeter</span><span class="chip">LoadRunner</span>
-          </dd>
-        </div>
-        <div>
-          <dt>Project Delivery</dt>
-          <dd>
-            <span class="chip">Requirements analysis</span><span class="chip">Scope &amp; milestone planning</span><span class="chip">Dependency &amp; risk tracking</span><span class="chip">Release readiness</span><span class="chip">Stakeholder communication</span><span class="chip">Incident coordination</span><span class="chip">Retrospectives</span><span class="chip">Technical documentation</span>
-          </dd>
-        </div>
-      </dl>
+      </div>
     </section>
 
-    <section>
-      <h2>Education</h2>
-      <div class="job">
-        <div class="job-head">
+    <section id="skills" class="alt">
+      <div class="wrap">
+        <h2 class="section-title reveal">Toolkit.</h2>
+        <p class="section-sub reveal">Strong technical depth, paired with the coordination it takes to ship.</p>
+        <div class="bento">
+          <div class="tile reveal">
+            <h3>Engineering</h3>
+            <div class="chips">
+              <span class="chip">Java</span><span class="chip">Python</span><span class="chip">Go</span><span class="chip">C++</span><span class="chip">SQL</span><span class="chip">Spring Boot</span><span class="chip">gRPC</span><span class="chip">Distributed systems</span><span class="chip">Microservices</span>
+            </div>
+          </div>
+          <div class="tile reveal">
+            <h3>Platforms &amp; Tools</h3>
+            <div class="chips">
+              <span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">GCP</span><span class="chip">Jenkins</span><span class="chip">Datadog</span><span class="chip">Grafana</span><span class="chip">JMeter</span><span class="chip">LoadRunner</span>
+            </div>
+          </div>
+          <div class="tile wide reveal">
+            <h3>Project Delivery</h3>
+            <div class="chips">
+              <span class="chip">Requirements analysis</span><span class="chip">Scope &amp; milestone planning</span><span class="chip">Dependency &amp; risk tracking</span><span class="chip">Release readiness</span><span class="chip">Stakeholder communication</span><span class="chip">Incident coordination</span><span class="chip">Retrospectives</span><span class="chip">Technical documentation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="wrap">
+        <div class="edu reveal">
+          <p class="eyebrow">Education · 2016 – 2021</p>
           <h3>University of Waterloo</h3>
-          <span class="when">2016 – 2021</span>
+          <p class="degree">BCS (Co-op Honours), Computer Science</p>
+          <ul class="honors">
+            <li>Graduated with distinction</li>
+            <li>President’s Scholarship of Distinction</li>
+            <li>President’s Research Award</li>
+            <li>Term Dean’s Honours List</li>
+          </ul>
         </div>
-        <p class="role">BCS (Co-op Honours), Computer Science · Waterloo, Canada</p>
-        <ul>
-          <li>Graduated with distinction</li>
-          <li>President’s Scholarship of Distinction and President’s Research Award</li>
-          <li>Term Dean’s Honours List (average of 87% or higher)</li>
-        </ul>
       </div>
     </section>
 
-    <footer>© 2026 Yuxiang (Michael) Zhang</footer>
+    <section id="contact" class="contact alt">
+      <div class="wrap">
+        <h2 class="section-title reveal">Let’s talk.</h2>
+        <p class="section-sub reveal">Open to conversations about distributed systems, platform engineering, and delivery.</p>
+        <div class="ctas reveal">
+          <a class="btn btn-primary" href="https://www.linkedin.com/in/michael-zhang-uw">LinkedIn</a>
+          <a class="btn btn-ghost js-email" href="#" data-u="505gnahz.gnaixuy" data-d="moc.liamg">Email</a>
+          <a class="btn btn-ghost" href="https://github.com/YX-Zhang-5">GitHub</a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="wrap">© 2026 Yuxiang (Michael) Zhang · Toronto, Canada</div>
+  </footer>
+
   <script>
     // The address is stored reversed and split so scrapers reading the HTML don't find it;
     // it's assembled only when a visitor clicks.
-    document.getElementById("email").addEventListener("click", function (e) {
-      if (this.dataset.ready) return;
-      e.preventDefault();
-      var rev = function (s) { return s.split("").reverse().join(""); };
-      var addr = rev(this.dataset.u) + "@" + rev(this.dataset.d);
-      this.href = "mailto:" + addr;
-      this.textContent = addr;
-      this.dataset.ready = "1";
-      window.location.href = this.href;
+    document.querySelectorAll(".js-email").forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        if (this.dataset.ready) return;
+        e.preventDefault();
+        var rev = function (s) { return s.split("").reverse().join(""); };
+        var addr = rev(this.dataset.u) + "@" + rev(this.dataset.d);
+        this.href = "mailto:" + addr;
+        this.textContent = addr;
+        this.dataset.ready = "1";
+        window.location.href = this.href;
+      });
     });
+
+    // Fade sections in as they scroll into view.
+    var items = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: "0px 0px -8% 0px" });
+      items.forEach(function (el) { io.observe(el); });
+    } else {
+      items.forEach(function (el) { el.classList.add("in"); });
+    }
   </script>
 </body>
 </html>
