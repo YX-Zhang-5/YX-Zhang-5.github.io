@@ -86,7 +86,7 @@
       <h1>Yuxiang Zhang</h1>
       <p class="tagline">Senior Software Engineer at eBay · Toronto, Canada</p>
       <p class="links">
-        <a href="mailto:yuxiang.zhang505@gmail.com">Email</a>
+        <a href="#" id="email" data-u="505gnahz.gnaixuy" data-d="moc.liamg">Email</a>
         <a href="https://github.com/YX-Zhang-5">GitHub</a>
       </p>
     </header>
@@ -181,5 +181,19 @@
 
     <footer>© 2026 Yuxiang Zhang</footer>
   </main>
+  <script>
+    // The address is stored reversed and split so scrapers reading the HTML don't find it;
+    // it's assembled only when a visitor clicks.
+    document.getElementById("email").addEventListener("click", function (e) {
+      if (this.dataset.ready) return;
+      e.preventDefault();
+      var rev = function (s) { return s.split("").reverse().join(""); };
+      var addr = rev(this.dataset.u) + "@" + rev(this.dataset.d);
+      this.href = "mailto:" + addr;
+      this.textContent = addr;
+      this.dataset.ready = "1";
+      window.location.href = this.href;
+    });
+  </script>
 </body>
 </html>
